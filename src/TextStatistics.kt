@@ -1,6 +1,5 @@
 import io.reactivex.rxkotlin.toObservable
 import java.io.File
-import java.io.FileNotFoundException
 import java.util.regex.Pattern
 
 /**
@@ -19,7 +18,7 @@ import java.util.regex.Pattern
 
 class TextStatistics() {
 
-    private var lipsum: String = "res/lipsum5778.txt"
+    private val lipsum: String = "res/lipsum5778.txt"
 
     private var lines: ArrayList<String> ?= null
     private var words: ArrayList<String> ?= null
@@ -83,7 +82,7 @@ class TextStatistics() {
      * @return Float
      */
     fun getAverageNumberOfLettersPerWord(): Float {
-        var total: Int = 0
+        var total = 0
         words!!.toObservable()
             .map { // convert each word into its length
                 it -> it.length
@@ -116,7 +115,7 @@ class TextStatistics() {
      * @return Char
      */
     fun getMostCommonLetter(): Char {
-        var map = mutableMapOf<Char, Int>()
+        val map = mutableMapOf<Char, Int>()
 
         words!!.toObservable()
             .map { // convert each word into a character array
