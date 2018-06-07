@@ -18,9 +18,12 @@ import java.util.regex.Pattern
 
 class TextStatistics() {
 
-    private val lipsum: String = "res/lipsum5778.txt"
+    private val lipsum: String = "res/gigabyte.txt"
 
     private var lines: ArrayList<String> ?= null
+    private var lineCount: Int = 0
+    private var wordCount: Long = 0
+    private var letterCount: Long = 0
     private var words: ArrayList<String> ?= null
 
     init {
@@ -55,7 +58,7 @@ class TextStatistics() {
     fun getWordCount(): Int {
         lines!!.toObservable()
             .map { // convert each line into a list of words
-                it -> it.split(" ")
+                it -> it.split(' ', '\n', '\t')
             }
             .subscribe { // add each word in each line to the class-level variable
                 it.forEach {
@@ -67,6 +70,22 @@ class TextStatistics() {
         return words!!.count() // if there's nothing in the file, count will return 0
     }
 
+    /**
+     * Returns the whitespace-delimited word count in the file
+     *
+     * https://stackoverflow.com/a/13925522/7776826
+     * @return Long
+     */
+    fun getWordCountNew(): Long {
+        val file = File(lipsum)
+        file.forEachLine {
+            val words = it.split(' ')
+            wordCount += words.count()
+            lineCount++
+        }
+        return wordCount // if there's nothing in the file, count will return 0
+    }
+
     // if lipsum is changed, then the arrays need to be cleared. if it can't be changed, then they don't need to be cleared. var vs. val
 
     /**
@@ -74,7 +93,8 @@ class TextStatistics() {
      * @return Int
      */
     fun getLineCount(): Int {
-        return lines!!.count()
+        return lineCount
+        //return lines!!.count()
     }
 
     /**
@@ -90,7 +110,19 @@ class TextStatistics() {
             .subscribe { // add the length of that word to a count of total letters
                 total += it
             }
-        return average(total, words!!.count(), 1) // compute the average: total letters / quantity of words
+        return average(total.toLong(), words!!.count().toLong(), 1) // compute the average: total letters / quantity of words
+    }
+
+    /**
+     * Returns the average number of letters per word in the file
+     * @return Float
+     */
+    fun getAverageNumberOfLettersPerWordNew(): Float {
+        val file = File(lipsum)
+        file.forEachLine {
+            letterCount += it.length
+        }
+        return average(letterCount, wordCount, 1) // compute the average: total letters / quantity of words
     }
 
     /**
@@ -102,7 +134,7 @@ class TextStatistics() {
      * @param [decimals] the number of decimals which to return
      * @return Float
      */
-    private fun average(total: Int, count: Int, decimals: Int): Float {
+    private fun average(total: Long, count: Long, decimals: Int): Float {
         val result = total.toFloat() / count.toFloat()
         //println(result)
         return "%.${decimals}f".format(result).toFloat()
@@ -132,6 +164,32 @@ class TextStatistics() {
                     }
                 }
             }
+
+        return map.maxBy { it.value }!!.key // return the key whose value is the greatest
+    }
+
+    /**
+     * Returns the most common letter in the file. If there are multiple, will return first one found.
+     *
+     * https://stackoverflow.com/a/47026192/7776826
+     * @return Char
+     */
+    fun getMostCommonLetterNew(): Char {
+        val file = File(lipsum)
+        val map = mutableMapOf<Char, Int>()
+
+        file.forEachLine {
+            val array = it.toCharArray()
+            array.forEach {
+                if (map.containsKey(it)) {
+                    var value: Int = map[it]!!
+                    value++
+                    map[it] = value
+                } else {
+                    map[it] = 1
+                }
+            }
+        }
 
         return map.maxBy { it.value }!!.key // return the key whose value is the greatest
     }
