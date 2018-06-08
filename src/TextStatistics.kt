@@ -18,13 +18,16 @@ import java.util.regex.Pattern
 
 class TextStatistics() {
 
-    private val lipsum: String = "res/gigabyte.txt"
+    private val lipsum: String = "res/gigabyte.txt"   // EVIL!!!  WHY???
 
-    private var lines: ArrayList<String> ?= null
+    private var lines: ArrayList<String> ?= null  // This is not necessary
     private var lineCount: Int = 0
     private var wordCount: Long = 0
     private var letterCount: Long = 0
-    private var words: ArrayList<String> ?= null
+    private var words: ArrayList<String> ?= null  // This is not necessary
+    // instead of the arrays, have two frequency maps
+    // 1: Map<Integer, Integer> <-- word_length --> occurrences 
+    // 2: Map<Character, Integer> <-- character --> occurrences
 
     init {
         lines = ArrayList()
@@ -37,11 +40,16 @@ class TextStatistics() {
      *
      * Checks if it exists and if it does adds all the lines to an ArrayList of Strings, where each String is a line.
      */
-    private fun readFile() {
+    private fun readFile(/* take argument as the file */) {
         val file = File(lipsum)
         if (file.exists()) {
             file.forEachLine {
-                lines!!.add(it)
+                lines!!.add(it)  // not necessary, perform your statistics here
+                // 1. increment line count
+                // 2. split line
+                // 3. incremen word count by number of words
+                // 4. for each word - increment word_length --> count map
+                // 5. for each word - iterate over characters and update character --> count map, if you wanted to do it faster, you could have a fixed size array of length a-zA-Z (52) but that wouldn't be portable at all, but would be very fast
             }
         } else {
             println("File not found. Please try another file.")
@@ -56,6 +64,7 @@ class TextStatistics() {
      * @return Int
      */
     fun getWordCount(): Int {
+        // why?  you should have the counts by now, just return the value
         lines!!.toObservable()
             .map { // convert each line into a list of words
                 it -> it.split(' ', '\n', '\t')
@@ -77,6 +86,7 @@ class TextStatistics() {
      * @return Long
      */
     fun getWordCountNew(): Long {
+        // WHY? you already have this information or should have this information already
         val file = File(lipsum)
         file.forEachLine {
             val words = it.split(' ')
@@ -102,6 +112,8 @@ class TextStatistics() {
      * @return Float
      */
     fun getAverageNumberOfLettersPerWord(): Float {
+        // this really should just be total characters in file, which you can get by keeping a running count of sum of
+        // characters as your getting length of each word, and then, bam!  total characters / num words
         var total = 0
         words!!.toObservable()
             .map { // convert each word into its length
