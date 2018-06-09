@@ -5,13 +5,15 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="java" value="13" />
-          <entry key="kt" value="1638" />
+          <entry key="kt" value="2131" />
+          <entry key="txt" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="13" />
-          <entry key="Kotlin" value="1638" />
+          <entry key="Kotlin" value="2131" />
+          <entry key="PLAIN_TEXT" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">

@@ -25,8 +25,8 @@ class TextStatistics(filepath: String) {
     // instead of the arrays, have two frequency maps
     // 1: Map<Integer, Integer> <-- word_length --> occurrences 
     // 2: Map<Character, Integer> <-- character --> occurrences
-    private var wordLengths: MutableMap<Int, Int> ?= null
-    private var characters: MutableMap<Char, Int> ?= null
+    private var wordLengths: MutableMap<Any, Int> ?= null // Any is Int
+    private var characters: MutableMap<Any, Int> ?= null // Any is Char
 
     init {
         //lines = ArrayList()
@@ -62,22 +62,24 @@ class TextStatistics(filepath: String) {
                     val l = it.length
                     val chars = it.toCharArray()
 
-                    if (wordLengths!!.containsKey(l)) {
+                    /*if (wordLengths!!.containsKey(l)) {
                         var wcount = wordLengths!![l]
                         wcount = wcount!! + 1
                         wordLengths!![l] = wcount
                     } else {
                         wordLengths!![l] = 1
-                    }
+                    }*/
+                    incrementKeyOfMap(wordLengths!!, l)
 
                     chars.forEach {
-                        if (characters!!.containsKey(it)) {
+                        /*if (characters!!.containsKey(it)) {
                             var ccount = characters!![it]
                             ccount = ccount!! + 1
                             characters!![it] = ccount
                         } else {
                             characters!![it] = 1
-                        }
+                        }*/
+                        incrementKeyOfMap(characters!!, it)
 
                         charCount++
                     }
@@ -95,6 +97,22 @@ class TextStatistics(filepath: String) {
         println("...Finished reading file...")
         println("\t\t\t-----")
         println("File reading & processing run time: $totalTime ms\n")
+    }
+
+    /**
+     * Increments the key of a map by one if the key exists in the map. If the key
+     * does not exist in the map, the key is put and its value is set to one.
+     * @param[map] the MutableMap where key type is Any and value type is int
+     * @param[key] the key for which to look
+     */
+    private fun incrementKeyOfMap(map: MutableMap<Any, Int>, key: Any) {
+        if (map.containsKey(key)) {
+            var count = map[key]
+            count = count!! + 1
+            map[key] = count
+        } else {
+            map[key] = 1
+        }
     }
 
     /**
@@ -146,6 +164,6 @@ class TextStatistics(filepath: String) {
      * @return Char
      */
     fun getMostCommonLetter(): Char {
-        return characters!!.maxBy { it.value }!!.key // return the key whose value is the greatest
+        return characters!!.maxBy { it.value }!!.key as Char// return the key whose value is the greatest
     }
 }

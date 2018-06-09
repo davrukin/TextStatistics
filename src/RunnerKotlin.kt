@@ -2,7 +2,7 @@ class RunnerKotlin {
 
     companion object {
 
-        private val ts = TextStatistics("res/gigabyte.txt")
+        private val ts = TextStatistics("res/big.txt")
 
         @JvmStatic
         fun main(args: Array<String>) {
