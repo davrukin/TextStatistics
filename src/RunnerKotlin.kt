@@ -2,38 +2,19 @@ class RunnerKotlin {
 
     companion object {
 
-        private val ts = TextStatistics()
+        private val ts = TextStatistics("res/gigabyte.txt")
 
         @JvmStatic
         fun main(args: Array<String>) {
-
-            /*println("Word Count: ${ts.getWordCount()}")
-            println("Confirm Word Count: ${ts.confirmWordCount()}")
-            println("Line Count: ${ts.getLineCount()}")
-            println("Average Number of Letters Per Word: ${ts.getAverageNumberOfLettersPerWord()}")
-            println("Most Common Letter: ${ts.getMostCommonLetter()}")*/
-
             testWordCountWithRunTime()
-            testWordCountNewWithRunTime()
             testLineCountWithRunTime()
             testAverageWithRunTime()
-            testAverageNewWithRunTime()
             testCommonWithRunTime()
-            testCommonNewWithRunTime()
         }
 
         private fun testWordCountWithRunTime() {
             val startTime = System.currentTimeMillis()
             println("Word Count: ${ts.getWordCount()}")
-            val endTime = System.currentTimeMillis()
-
-            val totalTime = endTime - startTime
-            println("Run Time: $totalTime ms\n")
-        }
-
-        private fun testWordCountNewWithRunTime() {
-            val startTime = System.currentTimeMillis()
-            println("Word Count New: ${ts.getWordCountNew()}")
             val endTime = System.currentTimeMillis()
 
             val totalTime = endTime - startTime
@@ -58,27 +39,9 @@ class RunnerKotlin {
             println("Run Time: $totalTime ms\n")
         }
 
-        private fun testAverageNewWithRunTime() {
-            val startTime = System.currentTimeMillis()
-            println("Average Number of Letters Per Word New: ${ts.getAverageNumberOfLettersPerWordNew()}")
-            val endTime = System.currentTimeMillis()
-
-            val totalTime = endTime - startTime
-            println("Run Time: $totalTime ms\n")
-        }
-
         private fun testCommonWithRunTime() {
             val startTime = System.currentTimeMillis()
             println("Most Common Letter: ${ts.getMostCommonLetter()}")
-            val endTime = System.currentTimeMillis()
-
-            val totalTime = endTime - startTime
-            println("Run Time: $totalTime ms\n")
-        }
-
-        private fun testCommonNewWithRunTime() {
-            val startTime = System.currentTimeMillis()
-            println("Most Common Letter New: ${ts.getMostCommonLetterNew()}")
             val endTime = System.currentTimeMillis()
 
             val totalTime = endTime - startTime

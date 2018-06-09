@@ -5,8 +5,8 @@
       <root url="jar://$PROJECT_DIR$/lib/rxkotlin-2.2.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/rxjava-2.1.6.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/reactive-streams-1.0.1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/kotlin-stdlib-1.1.60.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/annotations-13.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/kotlin-stdlib.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/lib/rxkotlin-2.2.0-javadoc.jar!/" />
