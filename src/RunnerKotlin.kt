@@ -6,6 +6,8 @@ class RunnerKotlin {
 
         @JvmStatic
         fun main(args: Array<String>) {
+            // The whole point is that your passing this value in from the command line, not hard coded
+            // Whoever is going to test your program is going to test it on their data set / file
             testWordCountWithRunTime()
             testLineCountWithRunTime()
             testAverageWithRunTime()
