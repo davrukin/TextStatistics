@@ -111,7 +111,6 @@ class TextStatistics(filepath: String) {
      */
     fun getLineCount(): Int {
         return lineCount
-        //return lines!!.count()
     }
 
     /**
@@ -123,9 +122,9 @@ class TextStatistics(filepath: String) {
     }
 
     /**
-     * Computes average to a single decimal point
+     * Computes average to a set decimal point
      *
-     * https://discuss.kotlinlang.org/t/print-floats-with-certain-amount-of-decimal-numbers/1812
+     * [https://discuss.kotlinlang.org/t/print-floats-with-certain-amount-of-decimal-numbers/1812/3](https://discuss.kotlinlang.org/t/print-floats-with-certain-amount-of-decimal-numbers/1812/3)
      * @param [total] the sum of values
      * @param [count] the count of values
      * @param [decimals] the number of decimals which to return
@@ -141,7 +140,7 @@ class TextStatistics(filepath: String) {
      * Returns the most common letter in the file. If there are multiple, will return first one found.
      * Returns null if there are no entries.
      *
-     * https://stackoverflow.com/a/47026192/7776826
+     * [https://stackoverflow.com/a/47026192/7776826](https://stackoverflow.com/a/47026192/7776826)
      * @return Char
      */
     fun getMostCommonLetter(): Char {

@@ -4,18 +4,18 @@
     <session id="-467070026">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="457" />
-          <entry key="kt" value="3148" />
+          <entry key="java" value="591" />
+          <entry key="kt" value="3362" />
           <entry key="md" value="880" />
-          <entry key="txt" value="104" />
+          <entry key="txt" value="203" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="457" />
-          <entry key="Kotlin" value="3165" />
+          <entry key="JAVA" value="591" />
+          <entry key="Kotlin" value="3379" />
           <entry key="Markdown" value="863" />
-          <entry key="PLAIN_TEXT" value="104" />
+          <entry key="PLAIN_TEXT" value="203" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">

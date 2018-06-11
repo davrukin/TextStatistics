@@ -12,14 +12,23 @@ public class RunnerJava {
 
         //RunnerKotlin.runStatistics("res/big.txt");
         //RunnerKotlin.main(new String[]{"res/big.txt"});
-        run();
+        if (args.length > 0) {
+            if (args[0] != null) {
+                run(args[0]);
+            } else {
+                System.out.println("Please add filepath as argument. Program quitting.");
+            }
+        } else {
+            System.out.println("Please add filepath as argument. Program quitting.");
+        }
     }
 
     /**
      * Runs the statistics
+     * @param filepath the path to the file
      */
-    public static void run() {
-        TextStatistics ts = new TextStatistics("res/big.txt");
+    public static void run(String filepath) {
+        TextStatistics ts = new TextStatistics(filepath);
         ts.getWordCount();
         ts.getLineCount();
         ts.getAverageNumberOfLettersPerWord();

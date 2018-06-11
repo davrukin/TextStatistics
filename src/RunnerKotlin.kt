@@ -14,7 +14,11 @@ class RunnerKotlin {
          */
         @JvmStatic
         fun main(args: Array<String>) {
-            runStatistics(args[0])
+            if (args.isNotEmpty()) {
+                runStatistics(args[0])
+            } else {
+                println("Please add filepath as argument. Program quitting.")
+            }
         }
 
         /**
