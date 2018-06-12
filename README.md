@@ -44,6 +44,9 @@ Library to run certain statistics on a text file
     * `java -jar TextStatistics.jar "res/big.txt"`
     * Replace `res/big.txt` with the absolute path to your file.
 
+### Compiling TextStatistics
+* `kotlinc TextStatistics.kt`
+
 ## Expected output
 ```
 ...Reading file "res/big.txt"...

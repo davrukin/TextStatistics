@@ -6,20 +6,21 @@
         <counts>
           <entry key="java" value="591" />
           <entry key="kt" value="3362" />
-          <entry key="md" value="880" />
-          <entry key="txt" value="297" />
+          <entry key="md" value="965" />
+          <entry key="txt" value="328" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="591" />
           <entry key="Kotlin" value="3379" />
-          <entry key="Markdown" value="863" />
-          <entry key="PLAIN_TEXT" value="297" />
+          <entry key="Markdown" value="948" />
+          <entry key="PLAIN_TEXT" value="328" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+          <entry key="CLASS" value="4" />
           <entry key="JAVA" value="4" />
           <entry key="Kotlin" value="5" />
           <entry key="Markdown" value="4" />
@@ -27,6 +28,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="class" value="4" />
           <entry key="java" value="4" />
           <entry key="kt" value="5" />
           <entry key="md" value="4" />
